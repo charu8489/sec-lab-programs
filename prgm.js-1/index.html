@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        }
+        input, select, button {
+        padding: 10px;
+        margin: 10px;
+        font-size: 16px;
+        }
+        #result {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        color: darkblue;
+        }
+        </style>
+    <input type="number" placeholder="num1" id="num1">
+    <input type="number" placeholder="num2" id="num2">
+
+    <select name="" id="operation">
+        <option value="add">Add (+)</option>
+        <option value="subtraction">Sub (-)</option>
+        <option value="multiplication">Multiplication (*)</option>
+        <option value="division">Division (/)</option>
+    </select>
+
+    <button onclick="calculate()">calculate</button>
+
+    <h2 id="result">result :</h2>
+
+    <script src="./app.js"></script>
+</body>
+</html>
