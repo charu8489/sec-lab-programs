@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Validation</title>
+  <style>.error { color: red; font-size: 20px; }</style>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form onsubmit="return validate()">
+    <label>Name: <input id="name" /></label><div id="nameError" class="error"></div><br><br>
+    <label>Email: <input id="email" /></label><div id="emailError" class="error"></div><br><br>
+    <label>Password: <input id="password" type="password" /></label><div id="passwordError" class="error"></div><br><br>
+    <label>Phone: <input id="phone" /></label><div id="phoneError" class="error"></div><br><br>
+    <button>Submit</button>
+  </form>
+
+  <script>
+    function validate() {
+      let valid = true;
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      
+      if (name === "") {
+        Error("name", "Name is required");
+        valid = false;
+      } else if (!/`[A-Za-z\s]+$/.test(name)) {
+        Error("name", "Only letters and spaces allowed");
+        valid = false;
+      } else {
+        Error("name", "");
+      }
+
+      
+      if (email === "") {
+        Error("email", "Email is required");
+        valid = false;
+      } else if (!/^[\w.%+-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(email)) {
+        Error("email", "Invalid email format");
+        valid = false;
+      } else {
+        Error("email", "");
+      }
+
+      
+      if (password === "") {
+        Error("password", "Password is required");
+        valid = false;
+      } else if (!/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password)) {
+        Error("password", "Min 8 chars, 1 uppercase, 1 number");
+        valid = false;
+      } else {
+        Error("password", "");
+      }
+
+      
+      if (phone === "") {
+        Error("phone", "Phone number is required");
+        valid = false;
+      } else if (!/^\d{10}$/.test(phone)) {
+        Error("phone", "Must be exactly 10 digits");
+        valid = false;
+      } else {
+        Error("phone", "");
+      }
+
+      return valid;
+    }
+
+    function Error(field, message) {
+      document.getElementById(field + "Error").innerText = message;
+    }
+  </script>
+</body>
+</html>
