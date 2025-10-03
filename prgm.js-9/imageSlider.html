@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    .slider{
+        text-align: center;
+        height: 400px;
+        width: 60%;
+        position: relative;
+        margin: auto;
+    }
+    .slider img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    button{
+        padding: 10px;
+        border:none;
+        background-color: red;
+        border-radius: 10px;
+    }
+</style>
+</head>
+<body>
+    <div class="slider">
+        <img src="./image1.jpg" alt="" id="displayImage"/>
+        <button id="prev">Previous</button> 
+        <button id="next">Next</button>
+        
+    </div>
+    <script>
+        let Images=["image1.jpg","image2.jpeg","image3.jpg"];
+        let currentIndex=0;
+        
+        let display=document.getElementById("displayImage");
+        let prevBTn=document.getElementById("prev");
+        let nextBTn=document.getElementById("next");
+        
+            nextBTn.addEventListener("click",()=>{
+                currentIndex=(currentIndex +1)% Image.length;
+                display.src=Images[currentIndex];
+
+            })
+            prevBTn.addEventListener("click",()=>{
+                currentIndex=(currentIndex - 1 + Images.length)% Images.length;
+                display.src=Images[currentIndex];
+            });
+            setInterval(()=>{
+                currentIndex = (currentIndex + 1)% Images.length;
+                display.src = Images[currentIndex];
+            }, 2000);
+        
+        </script>
+       
+</body>
+</html>
